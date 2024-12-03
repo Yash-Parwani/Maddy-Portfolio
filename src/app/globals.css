@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+@layer base {
+  :root {
+    --background: 280 50% 3%;
+    --foreground: 280 10% 95%;
+
+    --card: 280 45% 8%;
+    --card-foreground: 280 10% 95%;
+
+    --primary: 326 100% 70%;
+    --primary-foreground: 280 10% 95%;
+
+    --secondary: 280 30% 20%;
+    --secondary-foreground: 280 10% 95%;
+
+    --accent: 280 50% 15%;
+    --accent-foreground: 280 10% 95%;
+
+    --border: 280 30% 20%;
+    --ring: 326 100% 70%;
+  }
+}
+
+.gradient-text {
+  background: linear-gradient(to right, #ff69b4, #9370db);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.vertical-text {
+  writing-mode: vertical-lr;
+  transform: rotate(180deg);
+  text-orientation: mixed;
+  white-space: nowrap;
+}
+.curved-edge {
+  clip-path: polygon(0 0, 100% 0, 80% 100%, 0% 100%);
+}
+#triangle-topleft {
+  width: 0;
+  height: 0;
+  border-top: 100px solid black;
+  border-right: 100px solid transparent;
+  border-radius: 10px;
+}
