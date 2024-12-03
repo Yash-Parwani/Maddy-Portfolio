@@ -3,8 +3,6 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Inter } from "next/font/google"
-import { Header } from "@/components/header";
-
 const inter = Inter({ subsets: ["latin"] })
 
 const geistSans = localFont({
