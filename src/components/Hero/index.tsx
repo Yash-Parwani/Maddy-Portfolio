@@ -7,6 +7,7 @@ import { ProjectsSection } from "../ProjectSection"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Paper, PaperCard} from "../PaperCard"
 import { Footer } from "../Footer"
+import Link from "next/link"
 
 export function HeroSection() {
     const papers: Paper[] = [
@@ -135,9 +136,14 @@ export function HeroSection() {
                 </div>
 
                 <div className="grid grid-cols-2 gap-6">
-                  <div className="bg-zinc-800 rounded-[24px] p-8">
-                    <div className="text-2xl font-light">Experience</div>
-                  </div>
+                  <Link href="/chat" className="block">
+                    <div className="bg-zinc-800 rounded-[24px] p-8 group transition-colors hover:bg-zinc-800/80">
+                      <div className="text-2xl font-light">Portfolio Concierge</div>
+                      <p className="text-sm text-muted-foreground mt-2">
+                        Chat with AI to learn more about my work
+                      </p>
+                    </div>
+                  </Link>
                   
                   <div className="bg-black rounded-[24px] p-8 relative overflow-hidden">
                     <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-[#FFB800]" />
