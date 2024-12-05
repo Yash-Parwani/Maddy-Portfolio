@@ -8,29 +8,10 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Paper, PaperCard} from "../PaperCard"
 import { Footer } from "../Footer"
 import Link from "next/link"
+import data from "@/data/data.json"
 
 export function HeroSection() {
-    const papers: Paper[] = [
-        {
-          id: "01",
-          title: "Example Research Paper",
-          authors: "Gayatri Malladi, et al.",
-          conference: "International Conference on Computer Science",
-          year: "2023",
-          link: "https://example.com/paper",
-          abstract: "This paper presents a novel approach to..."
-        },
-        {
-          id: "02",
-          title: "Example Research Paper",
-          authors: "Gayatri Malladi, et al.",
-          conference: "International Conference on Computer Science",
-          year: "2023",
-          link: "https://example.com/paper",
-          abstract: "This paper presents a novel approach to..."
-        },
-        // Add more papers here
-      ]
+  const papers = data.papers
   const containerRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -45,6 +26,8 @@ export function HeroSection() {
   const projectsY = useTransform(scrollYProgress, [0.4, 0.7], [100, 0])
   const papersOpacity = useTransform(scrollYProgress, [0.8, 0.9], [0.75, 1])
   const papersY = useTransform(scrollYProgress, [0.8, 0.9], [100, 0])
+
+  const videoRef = useRef<HTMLVideoElement>(null)
 
   return (
     <div ref={containerRef} className="min-h-[400vh]">
@@ -85,11 +68,12 @@ export function HeroSection() {
                   <div className="flex flex-col justify-between h-full">
                     <div className="mt-12 space-y-8">
                       <div className="w-48 h-48 mx-auto relative">
-                        <Avatar className="w-48 h-48">
+                        <Avatar className="w-84 h-84">
                           <AvatarImage 
-                            src="/your-profile-image.jpg" 
+                            src="/profile.jpeg" 
                             alt="Profile" 
                             className="object-cover"
+                           
                           />
                           <AvatarFallback className="bg-[#FFB1E6]">GM</AvatarFallback>
                         </Avatar>
@@ -101,6 +85,12 @@ export function HeroSection() {
                         <h2 className="text-[64px] font-light leading-[1.1] text-white/95">Gayatri</h2>
                         <h2 className="text-[64px] font-light leading-[1.1] text-white/95">Malladi</h2>
                       </div>
+                      <div className="text-sm text-white/70">
+                        <p>For more information, click on portfolio concierge to chat with AI or scroll below</p>
+                      </div>
+                    </div>
+                    <div className="text-sm text-white/70">
+                      <p></p>
                     </div>
                   </div>
                 </motion.div>
@@ -114,9 +104,33 @@ export function HeroSection() {
                 <h1 className="text-8xl font-light">Overview</h1>
                 
                 <div className="grid grid-cols-[1.5fr,1fr] gap-6">
-                  <div className="relative aspect-[16/10] rounded-[24px] overflow-hidden bg-sky-100">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <Button variant="ghost" size="icon" className="w-12 h-12 rounded-full bg-white/90">
+                  <div className="relative aspect-[16/10] rounded-[24px] overflow-hidden bg-sky-100 group">
+                    <video
+                      ref={videoRef}
+                      className="w-full h-full object-cover"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                    >
+                      <source 
+                        src="https://res.cloudinary.com/dbndbgpdt/video/upload/v1733415731/dmqfbjckvmxjvhxbampu.mp4" 
+                        type="video/mp4" 
+                      />
+                    </video>
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                      <Button 
+                        variant="ghost" 
+                        size="icon" 
+                        className="w-12 h-12 rounded-full bg-white/90"
+                        onClick={() => {
+                          if (videoRef.current?.paused) {
+                            videoRef.current.play()
+                          } else {
+                            videoRef.current?.pause()
+                          }
+                        }}
+                      >
                         ▶
                       </Button>
                     </div>
@@ -124,34 +138,27 @@ export function HeroSection() {
                   
                   <div className="space-y-6">
                     <div className="bg-[#B4EDD4] rounded-[24px] p-8">
-                      <div className="text-6xl font-light text-black">A</div>
+                      <div className="text-6xl font-light text-black">{data.number_of_projects}</div>
                       <div className="text-lg font-light text-black/70">Projects</div>
                     </div>
                     
                     <div className="bg-[#7B6EF6] rounded-[24px] p-8">
-                      <div className="text-6xl font-light">B</div>
+                      <div className="text-6xl font-light">{data.number_of_papers}</div>
                       <div className="text-lg font-light text-white/70">Papers</div>
                     </div>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 gap-6">
                   <Link href="/chat" className="block">
                     <div className="bg-zinc-800 rounded-[24px] p-8 group transition-colors hover:bg-zinc-800/80">
                       <div className="text-2xl font-light">Portfolio Concierge</div>
                       <p className="text-sm text-muted-foreground mt-2">
-                        Chat with AI to learn more about my work
+                        Click to chat with AI to learn more about my work
                       </p>
                     </div>
                   </Link>
                   
-                  <div className="bg-black rounded-[24px] p-8 relative overflow-hidden">
-                    <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-[#FFB800]" />
-                    <div className="relative z-10">
-                      <div className="text-5xl font-light">C</div>
-                      <div className="text-lg font-light">Awards.</div>
-                    </div>
-                  </div>
                 </div>
               </motion.div>
             </div>
@@ -174,22 +181,24 @@ export function HeroSection() {
       </motion.div>
 
       {/* Papers Section */}
-      <motion.div 
-        className="min-h-[120vh] py-32"
-        style={{ 
-          opacity: papersOpacity,
-          y: papersY
-        }}
-      >
-        <div className="max-w-[1400px] mx-auto px-12">
-          <h1 className="text-8xl font-light mb-20">Papers</h1>
-          <div className="grid gap-8">
-            {papers.map((paper) => (
-              <PaperCard key={paper.id} paper={paper} />
-            ))}
+      {data.papers.length > 0 && (
+        <motion.div 
+          className="min-h-[120vh] py-32"
+          style={{ 
+            opacity: papersOpacity,
+            y: papersY
+          }}
+        >
+          <div className="max-w-[1400px] mx-auto px-12">
+            <h1 className="text-8xl font-light mb-20">Papers</h1>
+            <div className="grid gap-8">
+              {papers.map((paper) => (
+                <PaperCard key={paper.id} paper={paper} />
+              ))}
+            </div>
           </div>
-        </div>
-      </motion.div>
+        </motion.div>
+      )}
       <Footer />
     </div>
   )

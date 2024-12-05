@@ -5,6 +5,10 @@ import { motion, useInView, useAnimation } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
 import Image from "next/image"
 import image1 from "../../../public/image1.jpg"
+import data from "@/data/data.json"
+import image2 from "../../../public/image2.jpg"
+import image3 from "../../../public/image3.jpg"
+
 interface Project {
   id: string
   number: string
@@ -14,38 +18,18 @@ interface Project {
   image: string
 }
 
-const projects: Project[] = [
-  {
-    id: "01",
-    number: "01",
-    category: "Web Development",
-    title: "Prescient",
-    description: "Technologies used: WordPress with a Theme Composer to accelerate the development process. However, this solution lacks flexibility and optimization. The site is planned to be rebuilt in the future using a headless CMS for improved performance and optimized maintenance.",
-    image: "/placeholder.svg?height=600&width=800"
-  },
-  {
-    id: "02",
-    number: "02",
-    category: "Mobile Development",
-    title: "Health App",
-    description: "A comprehensive health tracking application built with React Native. Features include workout tracking, meal planning, and progress visualization.",
-    image: "/placeholder.svg?height=600&width=800"
-  },
-  {
-    id: "03",
-    number: "03",
-    category: "AI/ML",
-    title: "Smart Analytics",
-    description: "An AI-powered analytics platform that provides insights from user behavior data. Built using Python and TensorFlow with a React frontend.",
-    image: "/placeholder.svg?height=600&width=800"
-  }
-]
-
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true })
   const controls = useAnimation()
-
+  const getImage = (image: string) => {
+    switch (image) {
+      case "image1": return image1;
+      case "image2": return image2;
+      case "image3": return image3;
+      default: return image1;
+    }
+  }
   useEffect(() => {
     if (isInView) {
       controls.start("visible")
@@ -89,7 +73,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                 transition={{ duration: 1.5, ease: "easeOut" }}
                 className="w-full h-full"
               >
-                <Image src={image1} alt={project.title} width={800} height={600} className="w-full h-full object-cover" />
+                <Image src={getImage(project.image)} alt={project.title} width={800} height={600} className="w-full h-full object-cover" />
               </motion.div>
             </div>
           </div>
@@ -103,7 +87,7 @@ export function ProjectsSection() {
   return (
     <section className="py-20 space-y-20">
       <div className="container">
-        {projects.map((project, index) => (
+        {data.projects.map((project, index) => (
           <ProjectCard key={project.id} project={project} index={index} />
         ))}
       </div>

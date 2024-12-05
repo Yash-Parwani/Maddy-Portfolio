@@ -65,9 +65,14 @@ export function ChatInterface() {
       <ScrollArea className="flex-grow">
         <div>
           {messages.map((message, index) => (
-            <ChatMessage key={index} content={message.content} role={message.role} />
+            <ChatMessage 
+              key={index} 
+              content={message.content} 
+              role={message.role} 
+              isFirstMessage={index === 0}
+            />
           ))}
-          {loading && <ChatMessage content="Typing..." role="assistant" />}
+          {loading && <ChatMessage content="Thinking..." role="assistant" />}
         </div>
       </ScrollArea>
       <div className="p-4 bg-[#0A0A0A]">

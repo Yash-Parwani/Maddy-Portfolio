@@ -1,0 +1,54 @@
+{
+    "projects": [
+      {
+        "id": "01",
+        "number": "01",
+        "category": "Cybersecurity",
+        "title": "Zero-Day Attack Detection",
+        "description": "This project focused on using Graph CodeBert and DCGAN models to detect zero-day attacks and insecure design flaws**, such as insufficient compartmentalization and providing access to critical state information. The project was developed during an internship at the Centre for Development of Advanced Computing (C-DAC) from September 2023 to March 2024. As part of this project, the researcher developed a system that **produced a visual image of data flow analysis through image processing**. The researcher also gained hands-on experience with static and dynamic tools for web application security testing in the field of cybersecurity during this internship. ",
+        "image": "image1"
+      },
+      {
+        "id": "02",
+        "number": "02",
+        "category": "Research",
+        "title": "Construction Worker Safety",
+        "description": "This project involved the development of a real-time AI-based smart construction worker safety inspection model. The goal of the project was to reduce the number of fatal construction accidents that occur due to manual supervision methods and a shortage of qualified site inspectors.The project used object detection models based on CNN, RCNN, SSD, and Faster-RCNN algorithms. A comparative analysis of these algorithms was performed, and the chosen model was integrated into a website. This project was undertaken at the National University of Singapore and Hewlett Packard Enterprise from December 2022 to January 2023.",
+        "image": "image2"
+      },    
+      {
+        "id": "03",
+        "number": "03",
+        "category": "Machine Learning and Deep Learning",
+        "title": "Multimodal Emotion Recognition",
+        "description": "This project focused on deepfake detection in videos and images. The researcher used Facial Emotion Recognition (FER) and Speech Emotion Recognition (SER) models to detect inconsistencies in emotional expressions. For FER, she implemented a CNN-LSTM model. For SER, she used an MLP classifier, CNN-LSTM, and RNN, successfully classifying 33 emotions. This project was undertaken between December 2023 and May 2024.",
+        "image": "image3"
+      }
+    ],
+    "papers": [
+      {
+        "id": "01",
+        "title": "Example Research Paper",
+        "authors": "Gayatri Malladi, et al.",
+        "conference": "International Conference on Computer Science",
+        "year": "2023",
+        "link": "https://example.com/paper",
+        "abstract": "This paper presents a novel approach to..."
+      },
+      {
+        "id": "02",
+        "title": "Example Research Paper",
+        "authors": "Gayatri Malladi, et al.",
+        "conference": "International Conference on Computer Science",
+        "year": "2023",
+        "link": "https://example.com/paper",
+        "abstract": "This paper presents a novel approach to..."
+      }
+    ],
+    "number_of_projects": 6,
+    "number_of_papers": 2,
+    "email": "mgayatri2302@gmail.com",
+    "phone": "+1 (240)-536-3117",
+    "linkedin": "https://www.linkedin.com/in/gayatri-malladi",
+    "github": "https://github.com/mg-2321"
+  }

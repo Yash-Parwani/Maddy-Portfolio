@@ -1,7 +1,9 @@
-import { Github, Linkedin, Mail, Twitter } from "lucide-react"
+import { Github, Linkedin, Mail, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
-
+import Link from "next/link"
+import data from "@/data/data.json"
 export function Footer() {
+  const { github, linkedin, email, phone } = data;
   return (
     <footer className="border-t border-border/50">
       <div className="max-w-[1400px] mx-auto px-12 py-8">
@@ -11,41 +13,31 @@ export function Footer() {
           </p>
           
           <div className="flex items-center gap-6">
-            <Button 
-              variant="ghost" 
-              size="icon" 
-              onClick={() => window.open('https://github.com', '_blank')}
-              className="cursor-pointer hover:scale-110 active:scale-95 transition-transform"
+            <Link
+              href={github} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="cursor-pointer hover:scale-110 active:scale-95 transition-transform z-10"
             >
               <Github className="w-5 h-5" />
-            </Button>
+            </Link>
 
-            <Button 
-              variant="ghost" 
-              size="icon"
-              onClick={() => window.open('https://linkedin.com', '_blank')}
-              className="cursor-pointer hover:scale-110 active:scale-95 transition-transform"
+            <Link
+              href={linkedin} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="cursor-pointer hover:scale-110 active:scale-95 transition-transform z-10"
             >
               <Linkedin className="w-5 h-5" />
-            </Button>
-
-            <Button 
-              variant="ghost" 
-              size="icon"
-              onClick={() => window.open('https://twitter.com', '_blank')}
-              className="cursor-pointer hover:scale-110 active:scale-95 transition-transform"
-            >
-              <Twitter className="w-5 h-5" />
-            </Button>
-
-            <Button 
-              variant="ghost" 
-              size="icon"
-              onClick={() => window.open('mailto:example@email.com')}
-              className="cursor-pointer hover:scale-110 active:scale-95 transition-transform"
+            </Link>
+            <Link
+              href={email} 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="cursor-pointer hover:scale-110 active:scale-95 transition-transform z-10"
             >
               <Mail className="w-5 h-5" />
-            </Button>
+            </Link>
           </div>
         </div>
       </div>
