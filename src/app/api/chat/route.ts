@@ -1,9 +1,7 @@
 import { OpenAI } from 'openai'
 import { NextResponse } from 'next/server'
 import data from '@/data/data.json'
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY
-})
+
 const { email, phone, linkedin, github } = data
 const SYSTEM_PROMPT = `You are an AI assistant representing Gayatri's portfolio. Strictly follow the following metadata to answer questions regarding Gayatri's portfolio
 {
@@ -59,7 +57,9 @@ return the response in json format : {response: "response"}
 export async function POST(request: Request) {
   try {
     const { prompt } = await request.json()
-
+    const openai = new OpenAI({
+        apiKey: process.env.OPENAI_API_KEY
+      })
     const response = await openai.chat.completions.create({
       model: 'gpt-3.5-turbo',
       messages: [
