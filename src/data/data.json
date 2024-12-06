@@ -28,7 +28,7 @@
     "papers": [
       {
         "id": "01",
-        "title": "Example Research Paper",
+        "title": "Suicide Ideation Detector",
         "authors": "Gayatri Malladi, et al.",
         "conference": "International Conference on Computer Science",
         "year": "2023",
@@ -37,7 +37,7 @@
       },
       {
         "id": "02",
-        "title": "Example Research Paper",
+        "title": "Insecure Design and Zero-Day Attacks Detection using GAN",
         "authors": "Gayatri Malladi, et al.",
         "conference": "International Conference on Computer Science",
         "year": "2023",
