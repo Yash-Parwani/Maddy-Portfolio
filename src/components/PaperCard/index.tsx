@@ -37,13 +37,15 @@ export function PaperCard({ paper }: { paper: Paper }) {
               <span>{paper.year}</span>
             </div>
             <p className="text-sm text-muted-foreground">{paper.abstract}</p>
-            <Link 
+            <Link
               href={paper.link}
-              className="inline-block text-primary hover:text-primary/80 transition-colors"
-              target="_blank"
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="inline-block text-primary hover:text-primary/80 transition-colors z-10"
             >
               Read Paper →
             </Link>
+           
           </div>
         </CardContent>
       </Card>

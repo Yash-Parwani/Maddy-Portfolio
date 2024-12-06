@@ -15,13 +15,16 @@ interface Project {
   category: string
   title: string
   description: string
-  image: string
+  image?: string
+  videoUrl?: string
 }
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   const ref = useRef(null)
+  const videoRef = useRef<HTMLVideoElement>(null)
   const isInView = useInView(ref, { once: true })
   const controls = useAnimation()
+
   const getImage = (image: string) => {
     switch (image) {
       case "image1": return image1;
@@ -30,11 +33,39 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       default: return image1;
     }
   }
+
   useEffect(() => {
     if (isInView) {
       controls.start("visible")
     }
   }, [isInView, controls])
+
+  const renderMedia = () => {
+    if (project.videoUrl) {
+      return (
+        <video
+          ref={videoRef}
+          className="w-full h-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+        >
+          <source src={project.videoUrl} type="video/mp4" />
+        </video>
+      )
+    }
+    
+    return (
+      <Image 
+        src={getImage(project.image!)} 
+        alt={project.title} 
+        width={800} 
+        height={600} 
+        className="w-full h-full object-cover" 
+      />
+    )
+  }
 
   return (
     <motion.div
@@ -73,7 +104,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                 transition={{ duration: 1.5, ease: "easeOut" }}
                 className="w-full h-full"
               >
-                <Image src={getImage(project.image)} alt={project.title} width={800} height={600} className="w-full h-full object-cover" />
+                {renderMedia()}
               </motion.div>
             </div>
           </div>

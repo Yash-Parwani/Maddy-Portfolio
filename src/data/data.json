@@ -6,7 +6,8 @@
         "category": "Cybersecurity",
         "title": "Zero-Day Attack Detection",
         "description": "This project focused on using Graph CodeBert and DCGAN models to detect zero-day attacks and insecure design flaws**, such as insufficient compartmentalization and providing access to critical state information. The project was developed during an internship at the Centre for Development of Advanced Computing (C-DAC) from September 2023 to March 2024. As part of this project, the researcher developed a system that **produced a visual image of data flow analysis through image processing**. The researcher also gained hands-on experience with static and dynamic tools for web application security testing in the field of cybersecurity during this internship. ",
-        "image": "image1"
+        "image": "image1",
+        "videoUrl": "https://res.cloudinary.com/dbndbgpdt/video/upload/v1733415731/dmqfbjckvmxjvhxbampu.mp4"
       },
       {
         "id": "02",
